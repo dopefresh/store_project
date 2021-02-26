@@ -1,16 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.utils import timezone
 from django.contrib import messages
-
+from django.views import generic
 from .models import Item, OrderItem, Order
 
 
-
-def home(request):
-    context = {
-        'items': Item.objects.all() 
-    }
-    return render(request, 'store/home.html', context)
+class HomeView(generic.ListView):
+    model = Item
+    paginate_by = 30
+    template_name = 'store/home.html'
+    context_object_name = 'items'    
 
 
 def checkout(request):
