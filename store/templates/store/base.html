@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'store/css/home.css' %}"
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ecommerce</title>
+</head>
+
+<body>
+<div class='navbar'>
+    <div class='left'>
+        <a href = "{% url 'store:home' %}"> Home </a>
+        <a href = "{% url 'store:checkout' %}"> Checkout </a>
+        <a href = "{% url 'store:products' %}"> Products </a>
+    </div>
+    
+    <div class='right'>
+        <a href="{% url 'store:cart' %}"> Cart </a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'store:logout'%}"> Logout </a>
+            <p> {{ user.username }} </p>
+        {% else %}
+            <a href="{% url 'store:login' %}"> login </a>
+            <a href="{% url 'store:signup' %}"> Sign up </a>
+        {% endif %}
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    </div>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+a{
+    text-decoration: none;
+}
+.navbar .right{
+    margin-left: 1500px;
+}
+
+.content{
+    display: flex-column;
+}
+
+.content .item{
+    margin: 30px;
+}
+
+
+
+
+
+
+
+
